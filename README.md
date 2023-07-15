@@ -1,0 +1,2 @@
+# eventify
+Calendar Sharing App
