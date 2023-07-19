@@ -1,8 +1,6 @@
-import './globals.scss';
+import '../styles/globals.scss';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import ContentLayout from './components/Layouts/ContentLayout';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,8 +9,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="ja">
+      <body>
+        <ContentLayout>
+          {children}
+        </ContentLayout>
+      </body>
     </html>
   );
 }

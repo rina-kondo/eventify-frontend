@@ -1,0 +1,33 @@
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 239px;
+    height: 34px;
+    margin: 0 auto;
+    font-size: 14px;
+    border: solid 1px var(--color-gray);
+    border-radius: 17px;
+
+    :focus {
+      outline: none;
+    }
+  }
+
+  &__input {
+    width: 200px;
+    border-style: none;
+  }
+
+  &__icon {
+    padding: 0 3px 0 5px;
+    font-size: 1.2rem;
+    color: var(--color-gray);
+  }
+}
