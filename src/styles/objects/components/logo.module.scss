@@ -1,0 +1,13 @@
+.logo {
+  font-family: var(--font-logo);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--color-black);
+}
+
+.logo--l {
+  @extend.logo;
+
+  font-size: 48px;
+  font-weight: 700;
+}

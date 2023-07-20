@@ -84,11 +84,12 @@ h5 {
   --font-serif-jp: 'M+PLUS+1p';
   --font-serif: var(--font-serif-en), var(--font-serif-jp), 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'HG明朝E',
     'ＭＳ Ｐゴシック', 'ＭＳ ゴシック', serif;
-  --font-logo: 'Cormorant';
+  --font-logo: 'Montserrat', sans-serif;
   --font-extend: 'pnum' on, 'lnum' on;
   --width-max: 959px;
   --color-white: #fffffe;
   --color-black: #2b2c34;
+  --color-cream: #f9f2ed;
   --color-light-blue: #3ab0ff;
   --color-orange: #ffb562;
   --color-pink: #f87474;

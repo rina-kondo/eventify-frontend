@@ -7,7 +7,7 @@ import { HiOutlineEnvelope } from 'react-icons/hi2';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 
 export const metadata: Metadata = {
-  title: 'サインイン | Eventify',
+  title: 'アカウント登録 | Eventify',
 };
 
 export default function Page() {
@@ -22,13 +22,25 @@ export default function Page() {
       </label>
       <label className={styles.authForm__label}>
         <h2 className={styles.authForm__icon}>
+          <HiOutlineEnvelope />
+        </h2>
+        <input type="text" className={styles.authForm__input} placeholder="メールアドレス" />
+      </label>
+      <label className={styles.authForm__label}>
+        <h2 className={styles.authForm__icon}>
           <HiOutlineLockClosed />
         </h2>
         <input type="text" className={styles.authForm__input} placeholder="パスワード" />
       </label>
-      <button className={styles.authForm__submit}>サインイン</button>
-      <Link className={styles.authForm__link} href="/sign_up">
-        アカウント登録はこちらから
+      <label className={styles.authForm__label}>
+        <h2 className={styles.authForm__icon}>
+          <HiOutlineLockClosed />
+        </h2>
+        <input type="text" className={styles.authForm__input} placeholder="パスワード(確認)" />
+      </label>
+      <button className={styles.authForm__submit}>アカウント登録</button>
+      <Link className={styles.authForm__link} href="/sign_in">
+        サインインはこちらから
       </Link>
     </div>
   );
