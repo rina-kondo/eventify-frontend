@@ -1,13 +1,14 @@
-.logo {
+.middle {
   font-family: var(--font-logo);
   font-size: 28px;
   font-weight: 400;
   color: var(--color-black);
 }
 
-.logo--l {
-  @extend.logo;
-
+.large {
+  margin: 50px 0 30px;
+  font-family: var(--font-logo);
   font-size: 48px;
   font-weight: 700;
+  color: var(--color-black);
 }
