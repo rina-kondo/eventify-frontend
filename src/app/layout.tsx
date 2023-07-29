@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 import type { Metadata } from 'next';
-import ContentLayout from './components/Layouts/ContentLayout';
+import ContentLayout from './components/layouts/ContentLayout';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -11,9 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <body>
-        <ContentLayout>
-          {children}
-        </ContentLayout>
+        <ContentLayout>{children}</ContentLayout>
       </body>
     </html>
   );

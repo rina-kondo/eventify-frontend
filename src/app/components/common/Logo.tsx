@@ -1,4 +1,4 @@
-import styles from '@styles/objects/components/logo.module.scss';
+import styles from './Logo.module.scss';
 
 type LogoProps = {
   size?: 'large' | 'middle';

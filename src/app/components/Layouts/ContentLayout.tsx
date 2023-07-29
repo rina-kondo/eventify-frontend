@@ -1,15 +1,14 @@
 // import React from 'react';
 import FooterLayout from './Footer';
 import HeaderLayout from './Header';
-import mainStyles from '@styles/layouts/main.module.scss';
-import ContentStyles from '@styles/layouts/Content.module.scss';
+import styles from './Content.module.scss';
 
-export default function ContentLayout({ children }: {children: React.ReactNode}){
-  return(
-    <main className={mainStyles.main}>
+export default function ContentLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <main className={styles.main}>
       <HeaderLayout />
-      <div className={ContentStyles.contents}>{children}</div>
+      <div className={styles.contents}>{children}</div>
       <FooterLayout />
     </main>
-  )
+  );
 }

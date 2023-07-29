@@ -24,10 +24,6 @@ a {
     opacity: 0.5;
   }
 
-  &:visited {
-    color: var(--color-emerald);
-  }
-
   &.disabled {
     color: var(--color-primary-base);
     pointer-events: none;

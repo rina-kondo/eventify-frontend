@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import styles from '@styles/objects/projects/auth-form.module.scss';
-import Logo from '../components/Logo';
-import TextForm from '../components/TextForm';
-import Button from '../components/Button';
+import styles from '../page.module.scss';
+import Logo from '../../components/common/Logo';
+import TextForm from '../../components/common/TextForm';
+import Button from '../../components/common/Button';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 

@@ -1,4 +1,4 @@
-import styles from '@styles/objects/components/TextForm.module.scss';
+import styles from './TextForm.module.scss';
 
 type TextFormProps = {
   Icon: React.ComponentType;
