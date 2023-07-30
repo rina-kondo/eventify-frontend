@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 import type { Metadata } from 'next';
-import ContentLayout from './components/layouts/ContentLayout';
+import ContentLayout from '@components/layouts/ContentLayout';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

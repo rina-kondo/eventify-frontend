@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import styles from '../page.module.scss';
-import Logo from '@common/Logo';
-import TextForm from '@common/TextForm';
-import Button from '@common/Button';
+import Logo from '@components/common/Logo';
+import TextForm from '@components/common/TextForm';
+import Button from '@components/common/Button';
 import { HiOutlineUserCircle } from 'react-icons/hi2';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 
@@ -18,7 +18,7 @@ export default function Page() {
       <TextForm Icon={HiOutlineUserCircle} placeholder="ユーザーネーム" />
       <TextForm Icon={HiOutlineLockClosed} placeholder="パスワード" />
       <Button text="サインイン" color="black" />
-      <Link className={styles.link} href="/sign_up">
+      <Link className={styles.link} href="/sign-up">
         アカウント登録はこちらから
       </Link>
     </div>

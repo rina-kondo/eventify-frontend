@@ -12,12 +12,12 @@ export default function HeaderLayout() {
             </Link>
           </li>
           <li>
-            <Link className={styles.link} href="/sign_up">
+            <Link className={styles.link} href="/sign-up">
               新規登録
             </Link>
           </li>
           <li>
-            <Link className={styles.link} href="/sign_in">
+            <Link className={styles.link} href="/sign-in">
               サインイン
             </Link>
           </li>
