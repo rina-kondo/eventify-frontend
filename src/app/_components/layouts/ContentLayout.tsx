@@ -1,4 +1,3 @@
-// import React from 'react';
 import FooterLayout from './Footer';
 import HeaderLayout from './Header';
 import styles from './Content.module.scss';
