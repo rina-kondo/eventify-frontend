@@ -15,6 +15,24 @@ type Validations = {
   body?: string[];
 };
 
+interface SignInResponse {
+  id: number;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface SignUpResponse {
+  userId: number;
+  AccessToken: string;
+}
+
+interface ValidationError {
+  message: string[];
+  errors: Record<string, string[]>;
+}
+
 export const useFormChange = () => {
   const [formData, setFormData] = useState<FormProps>({
     name: '',
@@ -62,17 +80,16 @@ export const useAuth = (formData: FormProps) => {
     setValidations({});
     axios
       .post('http://localhost:3000/users', formData)
-      .then((response: AxiosResponse) => {
-        console.log(JSON.stringify(response.data));
+      .then((response: AxiosResponse<SignInResponse>) => {
         const signInForm: FormProps = {
           email: formData.email,
           password: formData.password,
         };
         postSignIn(signInForm);
       })
-      .catch((error: AxiosError) => {
+      .catch((error: AxiosError<ValidationError, Record<string, unknown>>) => {
         if (error.response?.status === 400) {
-          const errorMessage = (error.response.data as { message: string[] }).message;
+          const errorMessage = (error.response.data as ValidationError).message;
           setValidations({ body: errorMessage });
           return;
         } else {
@@ -86,7 +103,7 @@ export const useAuth = (formData: FormProps) => {
   function postSignIn(formData: FormProps) {
     axios
       .post('http://localhost:3000/auth/login', formData)
-      .then((response: AxiosResponse) => {
+      .then((response: AxiosResponse<SignUpResponse>) => {
         localStorage.setItem('auth-data', JSON.stringify(response.data));
 
         // set cookie
@@ -96,9 +113,9 @@ export const useAuth = (formData: FormProps) => {
 
         router.push('/');
       })
-      .catch((error: AxiosError) => {
+      .catch((error: AxiosError<ValidationError, Record<string, unknown>>) => {
         if (error.response?.status === 400) {
-          const errorMessage = (error.response.data as { message: string[] }).message;
+          const errorMessage = (error.response.data as ValidationError).message;
           setValidations({ body: errorMessage });
           return errorMessage;
         } else {
