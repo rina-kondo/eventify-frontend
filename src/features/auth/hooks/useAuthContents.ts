@@ -1,32 +1,9 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
-import { FormProps } from './types';
-import { useSignIn } from '@/features/auth/sign-in/hooks';
-import { useSignUp } from '@/features/auth/sign-up/hooks';
-import { AuthContents } from './types';
-
-export const useFormChange = () => {
-  const [formData, setFormData] = useState<FormProps>({
-    name: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
-  });
-
-  const handleFormChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
-    },
-    [setFormData],
-  );
-
-  return { formData, handleFormChange };
-};
+import { FormProps } from '../types';
+import { useSignIn } from '@/features/auth/sign-in/hooks/useSignIn';
+import { useSignUp } from '@/features/auth/sign-up/hooks/useSignUp';
+import { AuthContents } from '../types';
 
 export const useAuthContents = (isSignUp: boolean, formData: FormProps) => {
   const { signInErrors, postSignIn } = useSignIn();

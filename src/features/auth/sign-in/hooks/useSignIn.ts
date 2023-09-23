@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FormProps, ErrorProps, ErrorMessages } from '../types';
-import { signIn } from '../logics';
+import { FormProps, ErrorProps, ErrorMessages } from '../../types';
+import { signIn } from '../logics/signIn';
 
 export const useSignIn = () => {
   const router = useRouter();

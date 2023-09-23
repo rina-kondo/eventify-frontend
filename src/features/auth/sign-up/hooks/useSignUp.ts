@@ -1,25 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FormProps, ErrorProps, ErrorMessages } from '../types';
-import { signUp, validatePassword } from '../logics';
-
-export const useCheckPassword = (formData: FormProps) => {
-  const [passwordMatchError, setPasswordMatchError] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (formData.passwordConfirm !== undefined) {
-      if (!validatePassword(formData.password, formData.passwordConfirm)) {
-        setPasswordMatchError(true);
-      } else {
-        setPasswordMatchError(false);
-      }
-    }
-  }, [formData.password, formData.passwordConfirm]);
-
-  return { passwordMatchError };
-};
+import { FormProps, ErrorProps, ErrorMessages } from '../../types';
+import { signUp } from '../logics/signUp';
+import { validatePassword } from '../logics/validatePassword';
 
 export const useSignUp = () => {
   const router = useRouter();

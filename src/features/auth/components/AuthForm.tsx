@@ -2,8 +2,9 @@
 
 import { CustomTextField } from '@/components/mui/TextField';
 import styles from './AuthForm.module.scss';
-import { useCheckPassword } from '@/features/auth/sign-up/hooks';
-import { useAuthContents, useFormChange } from '@/features/auth/hooks';
+import { useCheckPassword } from '@/features/auth/sign-up/hooks/useCheckPassword';
+import { useFormChange } from '@/features/auth/hooks/useFormChange';
+import { useAuthContents } from '@/features/auth/hooks/useAuthContents';
 import { CustomButton } from '@/components/mui/Button';
 
 type AuthFormProps = {
