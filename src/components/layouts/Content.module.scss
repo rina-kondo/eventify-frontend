@@ -1,0 +1,14 @@
+.contents {
+  flex-grow: 1;
+  width: 420px;
+  padding-block-start: 24px;
+  margin: 0 auto 80px;
+  background-color: var(--color-white);
+  background-size: 32px 32px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
