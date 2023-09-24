@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import { ComponentProps } from 'react';

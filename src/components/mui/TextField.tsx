@@ -1,5 +1,3 @@
-'use client';
-
 import { TextField } from '@mui/material';
 import { ComponentProps } from 'react';
 
