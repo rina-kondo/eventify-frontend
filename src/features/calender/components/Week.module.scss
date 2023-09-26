@@ -1,0 +1,16 @@
+.dateWeekdayPair {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 15px 46px;
+}
+
+.dateWeekdayBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.calenderBody {
+  display: flex;
+}
