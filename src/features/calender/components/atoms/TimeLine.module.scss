@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 10px;
 }
 
 .emptyCell {
   position: relative;
-  top: 1px;
   width: 100%;
   height: 60px;
   border: 1px solid var(--color-gray);

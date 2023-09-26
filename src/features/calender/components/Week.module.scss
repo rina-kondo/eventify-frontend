@@ -14,3 +14,9 @@
 .calenderBody {
   display: flex;
 }
+
+.emptyCells {
+  flex: 1;
+  margin-top: 10px;
+  border: 1px solid var(--color-gray);
+}

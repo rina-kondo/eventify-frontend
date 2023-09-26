@@ -20,7 +20,9 @@ export default function Date() {
       </div>
       <div className={styles.calenderBody}>
         <TimeLine />
-        <EmptyCell key={day.format('D')} />
+        <div className={styles.emptyCells}>
+          <EmptyCell key={day.format('D')} />
+        </div>
       </div>
     </>
   );

@@ -2,10 +2,18 @@
 
 import { createContext, useContext, useState } from 'react';
 import { getCookie } from '@/logics/clientCookie';
-
-const calenderSettings = getCookie('calenderSettings');
+import dayjs from 'dayjs';
 
 export type CalenderThemeType = 'month' | 'week' | 'day';
+
+type calenderSettingType = {
+  theme: CalenderThemeType;
+  targetDate: dayjs.Dayjs;
+  targetMonth: dayjs.Dayjs;
+  targetYear: dayjs.Dayjs;
+};
+
+const calenderSettings: calenderSettingType = getCookie('calenderSettings');
 
 type CalenderContextType = {
   calenderTheme: CalenderThemeType;
@@ -15,7 +23,7 @@ type CalenderContextType = {
 const CalenderContext = createContext<CalenderContextType | undefined>(undefined);
 
 export const CalenderContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [calenderTheme, setCalenderTheme] = useState<CalenderThemeType>(calenderSettings.theme);
+  const [calenderTheme, setCalenderTheme] = useState<CalenderThemeType>(calenderSettings.theme as CalenderThemeType);
 
   return <CalenderContext.Provider value={{ calenderTheme, setCalenderTheme }}>{children}</CalenderContext.Provider>;
 };

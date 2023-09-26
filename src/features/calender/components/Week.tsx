@@ -28,9 +28,11 @@ export default function Week() {
       </div>
       <div className={styles.calenderBody}>
         <TimeLine />
-        {week.map((day) => (
-          <EmptyCell key={day.format('D')} />
-        ))}
+        <div className={styles.emptyCells}>
+          {week.map((day) => (
+            <EmptyCell key={day.format('D')} />
+          ))}
+        </div>
       </div>
     </>
   );

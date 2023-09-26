@@ -17,14 +17,14 @@ export default function Month() {
 
   return (
     <>
-      <div className={styles.weekBox}>
+      <div className={styles.weekDayLine}>
         {weekday.map((weekday, index) => (
-          <div className={styles.week} key={index}>
+          <div key={index}>
             <Weekday weekday={weekday} index={index} />
           </div>
         ))}
       </div>
-      <div className={styles.weekLine}>
+      <div className={styles.calenderBody}>
         {month.map((week, weekIndex) => (
           <React.Fragment key={weekIndex}>
             {week.map((day, dayIndex) => (
