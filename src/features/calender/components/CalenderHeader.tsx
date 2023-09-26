@@ -16,24 +16,24 @@ export function CalenderHeader() {
 
   return (
     <>
-      <div className={styles.flexRow}>
+      <div className={styles.calenderHeader}>
         <div className={`${styles.title} ${styles.flexColumn}`}>
           <h3>{targetYear}年</h3>
           <h1>{targetMonth + 1}月</h1>
         </div>
-        <div className={styles.flexColumn}>
+        <div className={styles.buttonGroup}>
           <ThemeSelectButton />
           <div className={styles.flexRow}>
             <CustomButton
               color="secondary"
-              sx={{ background: 'var(--color-light-gray)' }}
+              sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
               onClick={handleTargetDate(-1)}
             >
               <GoChevronLeft />
             </CustomButton>
             <CustomButton
               color="secondary"
-              sx={{ background: 'var(--color-light-gray)', padding: '0.12rem 1rem', fontSize: '0.9rem' }}
+              sx={{ background: 'var(--color-light-gray)', paddingY: '0.46rem', fontSize: '0.9rem', marginX: '0.5rem' }}
               onClick={() => {
                 handleSetTargetToday();
               }}
@@ -42,7 +42,7 @@ export function CalenderHeader() {
             </CustomButton>
             <CustomButton
               color="secondary"
-              sx={{ background: 'var(--color-light-gray)' }}
+              sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
               onClick={handleTargetDate(+1)}
             >
               <GoChevronRight />

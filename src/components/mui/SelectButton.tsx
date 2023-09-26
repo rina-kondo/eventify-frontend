@@ -9,7 +9,7 @@ type MenuItemPropsType = ComponentProps<typeof MenuItem>;
 
 export function CustomSelectButton(props: SelectPropsType) {
   return (
-    <FormControl size="small" sx={{ m: 1, minWidth: 70 }}>
+    <FormControl size="small" sx={{ m: 1, minWidth: 70, paddingX: 2 }}>
       <Select displayEmpty inputProps={{ 'aria-label': 'Without label' }} {...props}></Select>
     </FormControl>
   );

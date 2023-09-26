@@ -4,5 +4,5 @@ import { ComponentProps } from 'react';
 type P = ComponentProps<typeof Button>;
 
 export const CustomButton = (props: P) => {
-  return <Button {...props}></Button>;
+  return <Button size="medium" {...props}></Button>;
 };
