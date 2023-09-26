@@ -1,4 +1,6 @@
+import { useTargetMonthContext } from '@/infrastructure/context/target-month';
 import dayjs from 'dayjs';
+import { getDay } from '@/features/calender/logics/dayjs';
 import styles from './DayText.module.scss';
 
 type DateNumberProps = {
@@ -14,20 +16,21 @@ type WeekdayProps = {
 };
 
 export function DateNumber({ day, index, size }: DateNumberProps) {
-  const thisMonth = dayjs().month();
+  const { targetMonth } = useTargetMonthContext();
+  const thisMonth = getDay().month();
   const colorClass = size ? styles[size] : '';
 
   const todayClass = () => {
-    return day.format('DDMMYY') === dayjs().format('DDMMYY') ? styles.today : null;
+    return day.format('DDMMYY') === getDay().format('DDMMYY') ? styles.today : null;
   };
 
-  const notThisMonthClass = () => {
-    return day.month() === thisMonth ? null : styles.notThisMonth;
+  const notTargetMonthClass = () => {
+    return day.month() === targetMonth ? null : styles.notThisMonth;
   };
 
   return (
     <>
-      <div className={`${styles.dateNumber} ${todayClass()} ${notThisMonthClass()} ${colorClass}`}>
+      <div className={`${styles.dateNumber} ${todayClass()} ${notTargetMonthClass()} ${colorClass}`}>
         {day.format('D')}
       </div>
     </>

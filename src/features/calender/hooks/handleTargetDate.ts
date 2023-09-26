@@ -21,7 +21,7 @@ export function useHandleTargetDate() {
         resetTargetDate = getDay(targetDay + value * 7, targetMonth, targetYear);
         break;
       case 'day':
-        resetTargetDate = getDay(targetDay + value, targetMonth + value, targetYear);
+        resetTargetDate = getDay(targetDay + value, targetMonth, targetYear);
         break;
     }
 
