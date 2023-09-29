@@ -1,5 +1,5 @@
-import { useCalenderContext, CalenderThemeType } from '@/infrastructure/context/calender-theme';
-import { getCookie, setCookie } from '@/logics/clientCookie';
+import { useCalenderContext, CalenderThemeType } from '@/store/calender-theme';
+import { getCookie, setCookie } from '@/utility/clientCookie';
 import { SelectChangeEvent } from '@mui/material';
 
 export function useHandleCalenderTheme() {

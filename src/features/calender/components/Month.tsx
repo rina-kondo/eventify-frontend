@@ -1,12 +1,12 @@
 import React from 'react';
-import { useTargetDayContext } from '@/infrastructure/context/target-day';
-import { useTargetMonthContext } from '@/infrastructure/context/target-month';
-import { useTargetYearContext } from '@/infrastructure/context/target-year';
+import { useTargetDayContext } from '@/store/target-day';
+import { useTargetMonthContext } from '@/store/target-month';
+import { useTargetYearContext } from '@/store/target-year';
 import { getMonth } from '../logics/dayjs';
 import { DateNumber, Weekday } from './atoms/DayText';
 import styles from './Month.module.scss';
 
-export default function Month() {
+const Month = () => {
   const { targetMonth } = useTargetMonthContext();
   const { targetDay } = useTargetDayContext();
   const { targetYear } = useTargetYearContext();
@@ -37,4 +37,6 @@ export default function Month() {
       </div>
     </>
   );
-}
+};
+
+export default Month;

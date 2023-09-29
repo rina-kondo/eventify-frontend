@@ -1,17 +1,17 @@
 'use client';
 
-import { CustomTextField } from '@/components/mui/TextField';
+import { MuiTextField } from '@/components/mui/TextField';
 import styles from './AuthForm.module.scss';
 import { useCheckPassword } from '@/features/auth/sign-up/hooks/useCheckPassword';
 import { useFormChange } from '@/features/auth/hooks/useFormChange';
 import { useAuthContents } from '@/features/auth/hooks/useAuthContents';
-import { CustomButton } from '@/components/mui/Button';
+import { MuiButton } from '@/components/mui/Button';
 
 type AuthFormProps = {
   isSignUp: boolean;
 };
 
-export function AuthForm({ isSignUp }: AuthFormProps) {
+export const AuthForm = ({ isSignUp }: AuthFormProps) => {
   const { formData, handleFormChange } = useFormChange();
   const { passwordMatchError } = useCheckPassword(formData);
   const { authContents, signInErrors, signUpErrors } = useAuthContents(isSignUp, formData);
@@ -21,7 +21,7 @@ export function AuthForm({ isSignUp }: AuthFormProps) {
     <>
       <div className={styles.authForm}>
         {authContents.form.map((form, index) => (
-          <CustomTextField
+          <MuiTextField
             key={index}
             name={form.name}
             label={form.placeholder}
@@ -30,7 +30,7 @@ export function AuthForm({ isSignUp }: AuthFormProps) {
             onChange={handleFormChange}
           />
         ))}
-        <CustomButton
+        <MuiButton
           variant="contained"
           color="secondary"
           size="small"
@@ -39,7 +39,7 @@ export function AuthForm({ isSignUp }: AuthFormProps) {
           }}
         >
           {authContents.button.text}
-        </CustomButton>
+        </MuiButton>
         <ul className={styles.validation}>
           {isSignUp ? passwordMatchError && <li>パスワードが一致しません。</li> : undefined}
           {errorMessages.body &&
@@ -48,4 +48,4 @@ export function AuthForm({ isSignUp }: AuthFormProps) {
       </div>
     </>
   );
-}
+};

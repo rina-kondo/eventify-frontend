@@ -1,12 +1,12 @@
-import { useTargetDayContext } from '@/infrastructure/context/target-day';
-import { useTargetMonthContext } from '@/infrastructure/context/target-month';
-import { useTargetYearContext } from '@/infrastructure/context/target-year';
+import { useTargetDayContext } from '@/store/target-day';
+import { useTargetMonthContext } from '@/store/target-month';
+import { useTargetYearContext } from '@/store/target-year';
 import { getDay } from '../logics/dayjs';
 import { DateNumber, Weekday } from './atoms/DayText';
 import { EmptyCell, TimeLine } from './atoms/TimeLine';
 import styles from './Day.module.scss';
 
-export default function Date() {
+const Day = () => {
   const { targetMonth } = useTargetMonthContext();
   const { targetDay } = useTargetDayContext();
   const { targetYear } = useTargetYearContext();
@@ -26,4 +26,6 @@ export default function Date() {
       </div>
     </>
   );
-}
+};
+
+export default Day;

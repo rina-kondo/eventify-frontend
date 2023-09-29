@@ -1,6 +1,6 @@
 import styles from './TimeLine.module.scss';
 
-export function EmptyCell() {
+export const EmptyCell = () => {
   return (
     <>
       <div className={styles.emptyCellLine}>
@@ -10,9 +10,9 @@ export function EmptyCell() {
       </div>
     </>
   );
-}
+};
 
-export function TimeLine() {
+export const TimeLine = () => {
   return (
     <>
       <div className={styles.timeLine}>
@@ -24,7 +24,7 @@ export function TimeLine() {
       </div>
     </>
   );
-}
+};
 
 const TIME_LIST = [
   { id: 0, time: '00:00' },

@@ -5,6 +5,6 @@ import { ComponentProps } from 'react';
 
 type FavProps = ComponentProps<typeof Fab>;
 
-export default function CustomFloatingAction(props: FavProps) {
+export const MuiFloatingAction = (props: FavProps) => {
   return <Fab {...props}></Fab>;
-}
+};

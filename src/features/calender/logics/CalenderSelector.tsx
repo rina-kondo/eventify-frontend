@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useCalenderContext } from '@/infrastructure/context/calender-theme';
+import { useCalenderContext } from '@/store/calender-theme';
 
 const Month = React.lazy(() => import('../components/Month'));
 const Week = React.lazy(() => import('../components/Week'));

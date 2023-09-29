@@ -1,4 +1,4 @@
-import { useTargetMonthContext } from '@/infrastructure/context/target-month';
+import { useTargetMonthContext } from '@/store/target-month';
 import dayjs from 'dayjs';
 import { getDay } from '@/features/calender/logics/dayjs';
 import styles from './DayText.module.scss';
@@ -15,9 +15,8 @@ type WeekdayProps = {
   size?: 'small' | 'middle';
 };
 
-export function DateNumber({ day, index, size }: DateNumberProps) {
+export const DateNumber = ({ day, index, size }: DateNumberProps) => {
   const { targetMonth } = useTargetMonthContext();
-  const thisMonth = getDay().month();
   const colorClass = size ? styles[size] : '';
 
   const todayClass = () => {
@@ -25,7 +24,7 @@ export function DateNumber({ day, index, size }: DateNumberProps) {
   };
 
   const notTargetMonthClass = () => {
-    return day.month() === targetMonth ? null : styles.notThisMonth;
+    return day.month() === targetMonth ? null : styles.notTargetMonth;
   };
 
   return (
@@ -35,9 +34,9 @@ export function DateNumber({ day, index, size }: DateNumberProps) {
       </div>
     </>
   );
-}
+};
 
-export function Weekday({ weekday, index, size }: WeekdayProps) {
+export const Weekday = ({ weekday, index, size }: WeekdayProps) => {
   const colorClass = size ? styles[size] : '';
 
   const weekdayClass = () => {
@@ -49,4 +48,4 @@ export function Weekday({ weekday, index, size }: WeekdayProps) {
       <div className={`${styles.weekday} ${weekdayClass()} ${colorClass}`}>{weekday}</div>
     </>
   );
-}
+};

@@ -3,6 +3,6 @@ import { ComponentProps } from 'react';
 
 type P = ComponentProps<typeof TextField>;
 
-export const CustomTextField = (props: P) => {
+export const MuiTextField = (props: P) => {
   return <TextField {...props} />;
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState } from 'react';
-import { getCookie } from '@/logics/clientCookie';
+import { getCookie } from '@/utility/clientCookie';
 import dayjs from 'dayjs';
 
 export type CalenderThemeType = 'month' | 'week' | 'day';

@@ -5,7 +5,7 @@ import styles from './Navbar.module.scss';
 import { usePathname } from 'next/navigation';
 import { LuUserCircle, LuList, LuCalendar } from 'react-icons/lu';
 
-export default function Navbar() {
+export const Navbar = () => {
   const pathname = usePathname();
   const isAuthPage = pathname === '/sign-in' || pathname === '/sign-up';
   const navLinks = [
@@ -35,4 +35,4 @@ export default function Navbar() {
       </>
     );
   }
-}
+};

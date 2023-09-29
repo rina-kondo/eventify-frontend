@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import Link from 'next/link';
 
-export default function HeaderLayout() {
+export const HeaderLayout = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
@@ -25,4 +25,4 @@ export default function HeaderLayout() {
       </nav>
     </header>
   );
-}
+};

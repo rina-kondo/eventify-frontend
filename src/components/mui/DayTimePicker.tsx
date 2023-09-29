@@ -15,7 +15,7 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Tokyo');
 dayjs.locale('ja');
 
-export default function CustomDateTimePicker() {
+export const MuiDateTimePicker = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ja" dateFormats={{ monthAndYear: 'YYYY年MM月' }}>
       <DemoContainer components={['DateTimePicker']}>
@@ -30,4 +30,4 @@ export default function CustomDateTimePicker() {
       </DemoContainer>
     </LocalizationProvider>
   );
-}
+};

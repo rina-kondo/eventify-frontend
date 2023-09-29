@@ -1,14 +1,14 @@
 'use client';
 
 import { useHandleTargetDate, useSetTargetToday } from '@/features/calender/hooks/handleTargetDate';
-import { useTargetMonthContext } from '@/infrastructure/context/target-month';
-import { useTargetYearContext } from '@/infrastructure/context/target-year';
-import { CustomButton } from '@/components/mui/Button';
-import ThemeSelectButton from '@/features/calender/components/ThemeSelectButton';
+import { useTargetMonthContext } from '@/store/target-month';
+import { useTargetYearContext } from '@/store/target-year';
+import { MuiButton } from '@/components/mui/Button';
+import { ThemeSelectButton } from '@/features/calender/components/ThemeSelectButton';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import styles from './CalenderHeader.module.scss';
 
-export function CalenderHeader() {
+export const CalenderHeader = () => {
   const { targetMonth } = useTargetMonthContext();
   const { targetYear } = useTargetYearContext();
   const { handleTargetDate } = useHandleTargetDate();
@@ -24,14 +24,14 @@ export function CalenderHeader() {
         <div className={styles.buttonGroup}>
           <ThemeSelectButton />
           <div className={styles.flexRow}>
-            <CustomButton
+            <MuiButton
               color="secondary"
               sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
               onClick={handleTargetDate(-1)}
             >
               <GoChevronLeft />
-            </CustomButton>
-            <CustomButton
+            </MuiButton>
+            <MuiButton
               color="secondary"
               sx={{ background: 'var(--color-light-gray)', paddingY: '0.46rem', fontSize: '0.9rem', marginX: '0.5rem' }}
               onClick={() => {
@@ -39,17 +39,17 @@ export function CalenderHeader() {
               }}
             >
               今日
-            </CustomButton>
-            <CustomButton
+            </MuiButton>
+            <MuiButton
               color="secondary"
               sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
               onClick={handleTargetDate(+1)}
             >
               <GoChevronRight />
-            </CustomButton>
+            </MuiButton>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
