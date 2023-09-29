@@ -1,0 +1,29 @@
+.weekday {
+  width: 100%;
+  height: 38px;
+  font-size: 18px;
+  color: var(--color-black);
+  text-align: center;
+
+  &.sunday {
+    color: var(--color-pink);
+  }
+
+  &.saturday {
+    color: var(--color-light-blue);
+  }
+
+  &.ordinaryDay {
+    color: var(--color-black);
+  }
+
+  &.middle {
+    height: 38px;
+    font-size: 18px;
+  }
+
+  &.small {
+    height: 20px;
+    font-size: 15px;
+  }
+}

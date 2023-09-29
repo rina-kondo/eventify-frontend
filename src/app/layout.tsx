@@ -2,9 +2,7 @@ import '@/styles/globals.scss';
 import type { Metadata } from 'next';
 import { ContentLayout } from '@/components/layouts/ContentLayout';
 import ThemeRegistry from '@/infrastructure/mui/ThemeRegistry';
-import { TargetDayContextProvider } from '@/store/target-day';
-import { TargetMonthContextProvider } from '@/store/target-month';
-import { TargetYearContextProvider } from '@/store/target-year';
+import { TargetDateContextProvider } from '@/store/target-date';
 import { CalenderContextProvider } from '@/store/calender-theme';
 
 export const metadata: Metadata = {
@@ -16,15 +14,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ThemeRegistry>
       <html lang="ja">
         <body>
-          <TargetYearContextProvider>
-            <TargetMonthContextProvider>
-              <TargetDayContextProvider>
-                <CalenderContextProvider>
-                  <ContentLayout>{children}</ContentLayout>
-                </CalenderContextProvider>
-              </TargetDayContextProvider>
-            </TargetMonthContextProvider>
-          </TargetYearContextProvider>
+          <TargetDateContextProvider>
+            <CalenderContextProvider>
+              <ContentLayout>{children}</ContentLayout>
+            </CalenderContextProvider>
+          </TargetDateContextProvider>
         </body>
       </html>
     </ThemeRegistry>

@@ -1,48 +1,39 @@
-import { useTargetDayContext } from '@/store/target-day';
-import { useTargetMonthContext } from '@/store/target-month';
-import { useTargetYearContext } from '@/store/target-year';
+import { useTargetDateContext } from '@/store/target-date';
 import { useCalenderContext } from '@/store/calender-theme';
-import { getDay } from '../logics/dayjs';
+import { getDay } from '../utils/dayjs';
 import { Dayjs } from 'dayjs';
 
 export function useHandleTargetDate() {
-  const { targetMonth, setTargetMonth } = useTargetMonthContext();
-  const { targetDay, setTargetDay } = useTargetDayContext();
-  const { targetYear, setTargetYear } = useTargetYearContext();
+  const { targetDate, setTargetDate } = useTargetDateContext();
   const { calenderTheme } = useCalenderContext();
 
   const handleTargetDate = (value: number) => () => {
     let resetTargetDate: Dayjs;
     switch (calenderTheme) {
       case 'month':
-        resetTargetDate = getDay(targetDay, targetMonth + value, targetYear);
+        resetTargetDate = getDay(targetDate.date(), targetDate.month() + value, targetDate.year());
         break;
       case 'week':
-        resetTargetDate = getDay(targetDay + value * 7, targetMonth, targetYear);
+        resetTargetDate = getDay(targetDate.date() + value * 7, targetDate.month(), targetDate.year());
         break;
       case 'day':
-        resetTargetDate = getDay(targetDay + value, targetMonth, targetYear);
+        resetTargetDate = getDay(targetDate.date() + value, targetDate.month(), targetDate.year());
         break;
     }
 
-    setTargetMonth(resetTargetDate.month());
-    setTargetDay(resetTargetDate.date());
-    setTargetYear(resetTargetDate.year());
+    setTargetDate(resetTargetDate);
+    console.log(targetDate);
   };
 
   return { handleTargetDate };
 }
 
 export function useSetTargetToday() {
-  const { setTargetMonth } = useTargetMonthContext();
-  const { setTargetDay } = useTargetDayContext();
-  const { setTargetYear } = useTargetYearContext();
+  const { setTargetDate } = useTargetDateContext();
 
   const handleSetTargetToday = () => {
     const today = getDay();
-    setTargetMonth(today.month());
-    setTargetDay(today.date());
-    setTargetYear(today.year());
+    setTargetDate(today);
   };
 
   return { handleSetTargetToday };

@@ -1,4 +1,4 @@
-.dateNumber {
+.dayText {
   width: 28px;
   height: 28px;
   margin: 3px auto;
@@ -6,13 +6,17 @@
   color: var(--color-black);
   text-align: center;
 
+  &.ordinaryDay {
+    color: var(--color-black);
+  }
+
   &.today {
     color: var(--color-white);
     background-color: var(--color-emerald);
     border-radius: 50%;
   }
 
-  &.notTargetMonth {
+  &.grayedOutDay {
     color: var(--color-gray);
   }
 
@@ -26,26 +30,5 @@
     width: 32px;
     height: 32px;
     font-size: 21px;
-  }
-}
-
-.weekday {
-  width: 100%;
-  height: 38px;
-  font-size: 18px;
-  color: var(--color-black);
-  text-align: center;
-
-  &.sunday {
-    color: var(--color-pink);
-  }
-
-  &.saturday {
-    color: var(--color-light-blue);
-  }
-
-  &.small {
-    height: 20px;
-    font-size: 15px;
   }
 }

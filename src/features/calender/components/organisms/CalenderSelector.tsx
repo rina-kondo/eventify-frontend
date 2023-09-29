@@ -3,9 +3,9 @@
 import React from 'react';
 import { useCalenderContext } from '@/store/calender-theme';
 
-const Month = React.lazy(() => import('../components/Month'));
-const Week = React.lazy(() => import('../components/Week'));
-const Day = React.lazy(() => import('../components/Day'));
+const Month = React.lazy(() => import('./MonthCalender'));
+const Week = React.lazy(() => import('./WeekCalender'));
+const Day = React.lazy(() => import('./DayCalender'));
 
 export default function CalenderSelector() {
   const { calenderTheme } = useCalenderContext();
