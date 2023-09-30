@@ -33,13 +33,11 @@ export const CalenderHeader = () => {
           onChange={handleCalenderTheme}
           selectProps={toggleButtonProps}
         />
-        <div className={styles.selectThemeButtons}>
-          <PeriodControlButton
-            handleIncrementTargetDate={handleTargetDate(+1)}
-            handleDecrementTargetDate={handleTargetDate(-1)}
-            handleSetTargetToday={handleSetTargetToday}
-          />
-        </div>
+        <PeriodControlButton
+          handleIncrementTargetDate={handleTargetDate(+1)}
+          handleDecrementTargetDate={handleTargetDate(-1)}
+          handleSetTargetToday={handleSetTargetToday}
+        />
       </div>
     </div>
   );

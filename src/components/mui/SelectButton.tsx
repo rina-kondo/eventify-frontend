@@ -15,7 +15,7 @@ type ThemeSelectButtonProps = {
 
 const MuiSelectButton = (props: SelectPropsType) => {
   return (
-    <FormControl size="small" sx={{ m: 1, minWidth: 70, paddingX: 2 }}>
+    <FormControl size="small">
       <Select displayEmpty inputProps={{ 'aria-label': 'Without label' }} {...props}></Select>
     </FormControl>
   );

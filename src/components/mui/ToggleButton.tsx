@@ -6,11 +6,11 @@ import { ComponentProps } from 'react';
 type ToggleButtonProps = ComponentProps<typeof ToggleButton>;
 
 export const MuiToggleButtons = (props: ToggleButtonProps) => {
-  return <ToggleButton {...props} sx={{ padding: '0 20px' }}></ToggleButton>;
+  return <ToggleButton {...props}></ToggleButton>;
 };
 
 type ToggleButtonGroupProps = ComponentProps<typeof ToggleButtonGroup>;
 
 export const MuiToggleButtonGroup = (props: ToggleButtonGroupProps) => {
-  return <ToggleButtonGroup size="small" {...props} sx={{ padding: '0 20px' }}></ToggleButtonGroup>;
+  return <ToggleButtonGroup size="small" {...props}></ToggleButtonGroup>;
 };
