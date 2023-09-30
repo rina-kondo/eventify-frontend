@@ -1,20 +1,15 @@
 import React from 'react';
-import { useTargetDateContext } from '@/store/target-date';
-import { getDay, getMonth } from '@/features/calender/utils/dayjs';
+import dayjs from 'dayjs';
 import { DayText } from '../atoms/DayText';
 import { DayCell } from '../atoms/DayCell';
 import { WeekdayText } from '../atoms/WeekdayText';
 import styles from './MonthCalender.module.scss';
 
-const MonthCalender = () => {
-  const { targetDate } = useTargetDateContext();
-  const month = getMonth(targetDate.date(), targetDate.month(), targetDate.year());
-  const today = getDay();
-
+const MonthCalender = ({ targetMonth, today }: { targetMonth: dayjs.Dayjs[][]; today: dayjs.Dayjs }) => {
   return (
     <>
       <div className={styles.weekdaySlot}>
-        {month.map((week, weekIndex) => (
+        {targetMonth.map((week, weekIndex) => (
           <React.Fragment key={weekIndex}>
             {week.map((day, dayIndex) => (
               <React.Fragment key={dayIndex}>
@@ -26,7 +21,7 @@ const MonthCalender = () => {
       </div>
 
       <div className={styles.dateGrid}>
-        {month.map((week, weekIndex) => (
+        {targetMonth.map((week, weekIndex) => (
           <React.Fragment key={weekIndex}>
             {week.map((day) => (
               <DayCell key={day.date()}>

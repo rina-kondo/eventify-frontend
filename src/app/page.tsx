@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import CalenderSelector from '@/features/calender/components/organisms/CalenderSelector';
+import CalenderSelector from '@/features/calender/components/CalenderSelector';
 import { CalenderHeader } from '@/features/calender/components/organisms/CalenderHeader';
 import { GoPlus } from 'react-icons/go';
 import { MuiFloatingAction } from '@/components/mui/FloatingAction';

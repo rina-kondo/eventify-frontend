@@ -1,15 +1,11 @@
-import { useTargetDateContext } from '@/store/target-date';
-import { getDay } from '@/features/calender/utils/dayjs';
+import dayjs from 'dayjs';
 import { TimeSlot } from '../molecules/TimeSlot';
 import { TimeColumn } from '../molecules/TimeColumn';
 import { DayText } from '../atoms/DayText';
 import { WeekdayText } from '../atoms/WeekdayText';
 import styles from './DayCalender.module.scss';
 
-const DayCalender = () => {
-  const { targetDate } = useTargetDateContext();
-  const today = getDay();
-
+const DayCalender = ({ targetDate, today }: { targetDate: dayjs.Dayjs; today: dayjs.Dayjs }) => {
   return (
     <>
       <div className={styles.dateSlot}>

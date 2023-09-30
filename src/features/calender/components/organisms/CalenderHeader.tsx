@@ -1,16 +1,25 @@
 'use client';
 
-import { useHandleTargetDate, useSetTargetToday } from '@/features/calender/hooks/handleTargetDate';
 import { useTargetDateContext } from '@/store/target-date';
-import { MuiButton } from '@/components/mui/Button';
-import { ThemeSelectButton } from '@/features/calender/components/molecules/ThemeSelectButton';
-import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
+import { useCalenderContext } from '@/store/calender-theme';
+import { useHandleTargetDate, useSetTargetToday } from '@/features/calender/hooks/handleTargetDate';
+import { useHandleCalenderTheme } from '../../hooks/handleCalenderTheme';
+import { MuiThemeSelectButton } from '@/components/mui/SelectButton';
+import { PeriodControlButton } from '../molecules/PeriodControlButton';
 import styles from './CalenderHeader.module.scss';
 
 export const CalenderHeader = () => {
   const { targetDate } = useTargetDateContext();
   const { handleTargetDate } = useHandleTargetDate();
   const { handleSetTargetToday } = useSetTargetToday();
+  const { calenderTheme } = useCalenderContext();
+  const { handleCalenderTheme } = useHandleCalenderTheme();
+
+  const toggleButtonProps = [
+    { value: 'day', text: '日' },
+    { value: 'week', text: '週' },
+    { value: 'month', text: '月' },
+  ];
 
   return (
     <div className={styles.calenderHeader}>
@@ -19,31 +28,17 @@ export const CalenderHeader = () => {
         <div className={styles.monthText}>{targetDate.month() + 1}月</div>
       </div>
       <div className={styles.calenderDisplayControllers}>
-        <ThemeSelectButton />
+        <MuiThemeSelectButton
+          selectedValue={calenderTheme}
+          onChange={handleCalenderTheme}
+          selectProps={toggleButtonProps}
+        />
         <div className={styles.selectThemeButtons}>
-          <MuiButton
-            color="secondary"
-            sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
-            onClick={handleTargetDate(-1)}
-          >
-            <GoChevronLeft />
-          </MuiButton>
-          <MuiButton
-            color="secondary"
-            sx={{ background: 'var(--color-light-gray)', paddingY: '0.46rem', fontSize: '0.9rem', marginX: '0.5rem' }}
-            onClick={() => {
-              handleSetTargetToday();
-            }}
-          >
-            今日
-          </MuiButton>
-          <MuiButton
-            color="secondary"
-            sx={{ background: 'var(--color-light-gray)', paddingY: '0.7rem' }}
-            onClick={handleTargetDate(+1)}
-          >
-            <GoChevronRight />
-          </MuiButton>
+          <PeriodControlButton
+            handleIncrementTargetDate={handleTargetDate(+1)}
+            handleDecrementTargetDate={handleTargetDate(-1)}
+            handleSetTargetToday={handleSetTargetToday}
+          />
         </div>
       </div>
     </div>
