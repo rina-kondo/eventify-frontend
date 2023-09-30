@@ -11,13 +11,13 @@
   }
 
   &.today {
-    color: var(--color-white);
-    background-color: var(--color-emerald);
+    color: var(--color-calender-text-today);
+    background-color: var(--color-calender-bg-today);
     border-radius: 50%;
   }
 
   &.grayedOutDay {
-    color: var(--color-gray);
+    color: var(--color-calender-text-gray-out);
   }
 
   &.middle {
