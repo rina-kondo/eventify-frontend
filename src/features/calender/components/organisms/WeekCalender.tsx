@@ -4,6 +4,7 @@ import { WeekdayText } from '../atoms/WeekdayText';
 import { TimeSlot } from '../molecules/TimeSlot';
 import { TimeColumn } from '../molecules/TimeColumn';
 import styles from './WeekCalender.module.scss';
+import { dayjsFormats } from '@/dictionary/calender';
 
 const WeekCalender = ({ targetWeek, today }: { targetWeek: dayjs.Dayjs[]; today: dayjs.Dayjs }) => {
   return (
@@ -11,11 +12,15 @@ const WeekCalender = ({ targetWeek, today }: { targetWeek: dayjs.Dayjs[]; today:
       <div className={styles.dateSlot}>
         {targetWeek.map((day) => (
           <div className={styles.dayWeekdayCell} key={day.date()}>
-            <WeekdayText text={day.format('ddd')} weekDayNum={day.format('d')} size={'small'} />
+            <WeekdayText
+              text={day.format(dayjsFormats.weekdayShortText)}
+              weekDayNum={day.format(dayjsFormats.weekdayNum)}
+              size={'small'}
+            />
             <div className={styles.dateBox}>
               <DayText
                 day={day.date()}
-                isToday={today.format('DD/MM/YYYY') === day.format('DD/MM/YYYY')}
+                isToday={today.format(dayjsFormats.dateHeader) === day.format(dayjsFormats.dateHeader)}
                 size={'large'}
               />
             </div>
@@ -26,7 +31,7 @@ const WeekCalender = ({ targetWeek, today }: { targetWeek: dayjs.Dayjs[]; today:
         <TimeSlot />
         <div className={styles.timeCellsWrapper}>
           {targetWeek.map((day) => (
-            <TimeColumn key={day.format('D')}></TimeColumn>
+            <TimeColumn key={day.format(dayjsFormats.day)}></TimeColumn>
           ))}
         </div>
       </div>

@@ -4,6 +4,7 @@ import { DayText } from '../atoms/DayText';
 import { DayCell } from '../atoms/DayCell';
 import { WeekdayText } from '../atoms/WeekdayText';
 import styles from './MonthCalender.module.scss';
+import { dayjsFormats } from '@/dictionary/calender';
 
 const MonthCalender = ({ targetMonth, today }: { targetMonth: dayjs.Dayjs[][]; today: dayjs.Dayjs }) => {
   return (
@@ -13,7 +14,13 @@ const MonthCalender = ({ targetMonth, today }: { targetMonth: dayjs.Dayjs[][]; t
           <React.Fragment key={weekIndex}>
             {week.map((day, dayIndex) => (
               <React.Fragment key={dayIndex}>
-                {weekIndex === 0 && <WeekdayText text={day.format('dd')} weekDayNum={day.format('d')} size="middle" />}
+                {weekIndex === 0 && (
+                  <WeekdayText
+                    text={day.format(dayjsFormats.weekdayShortText)}
+                    weekDayNum={day.format(dayjsFormats.weekdayNum)}
+                    size="middle"
+                  />
+                )}
               </React.Fragment>
             ))}
           </React.Fragment>
@@ -27,7 +34,7 @@ const MonthCalender = ({ targetMonth, today }: { targetMonth: dayjs.Dayjs[][]; t
               <DayCell key={day.date()}>
                 <DayText
                   day={day.date()}
-                  isToday={today.format('DD/MM/YYYY') === day.format('DD/MM/YYYY')}
+                  isToday={today.format(dayjsFormats.dateHeader) === day.format(dayjsFormats.dateHeader)}
                   isGrayedOut={day.month() === today.month()}
                 />
               </DayCell>
