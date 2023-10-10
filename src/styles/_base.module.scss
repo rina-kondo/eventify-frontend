@@ -1,5 +1,11 @@
 @use './typography.module' as *;
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   @include paragraph4;
 
@@ -41,18 +47,6 @@ span {
   }
 }
 
-button {
-  transition: opacity 0.3s var(--ease-out-quad);
-
-  &.underline {
-    text-decoration: underline;
-  }
-
-  &:hover {
-    opacity: 0.5;
-  }
-}
-
 [hidden],
 .is-hidden {
   display: none !important;
@@ -76,13 +70,12 @@ h5 {
 :root {
   // font
   --font-sans-serif: 'Inter', 'Noto Sans JP', 'YuGothic', 'メイリオ', 'Meiryo', 'Helvetica', 'Arial', sans-serif;
-  --font-serif-en: 'Inter';
-  --font-serif-jp: 'M+PLUS+1p';
   --font-serif: var(--font-serif-en), var(--font-serif-jp), 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'HG明朝E',
     'ＭＳ Ｐゴシック', 'ＭＳ ゴシック', serif;
   --font-logo: 'Montserrat', sans-serif;
   --font-extend: 'pnum' on, 'lnum' on;
-  --width-max: 959px;
+
+  // colors
   --color-white: #fffffe;
   --color-black: #2b2c34;
   --color-cream: #f9f2ed;
@@ -92,6 +85,14 @@ h5 {
   --color-gray: #97999d;
   --color-light-gray: #eee;
   --color-emerald: #00adb5;
+
+  // calender css
+  --color-calender-text-sunday: #ff5f5f;
+  --color-calender-text-saturday: #5f8fff;
+  --color-calender-text-gray-out: var(--color-gray);
+  --color-calender-bg-today: var(--color-emerald);
+  --color-calender-text-today: var(--color-white);
+  --color-calender-table-line: var(--color-gray);
 
   // easing
   --ease-ease: cubic-bezier(0.25, 0.1, 0.25, 1);

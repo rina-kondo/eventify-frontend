@@ -1,0 +1,36 @@
+.calenderHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .yearText {
+    font-size: 17px;
+  }
+
+  > .monthText {
+    font-size: 29px;
+  }
+}
+
+.calenderDisplayControllers {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.selectThemeButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

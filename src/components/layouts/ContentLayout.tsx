@@ -1,9 +1,9 @@
-import FooterLayout from './Footer';
-import HeaderLayout from './Header';
-import Navbar from './Navbar';
+import { FooterLayout } from './Footer';
+import { HeaderLayout } from './Header';
+import { Navbar } from './Navbar';
 import styles from './Content.module.scss';
 
-export default function ContentLayout({ children }: { children: React.ReactNode }) {
+export const ContentLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <main className={styles.main}>
       <HeaderLayout />
@@ -12,4 +12,4 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
       <FooterLayout />
     </main>
   );
-}
+};
