@@ -31,7 +31,7 @@ const WeekCalender = ({ targetWeek, today }: { targetWeek: dayjs.Dayjs[]; today:
         <TimeSlot />
         <div className={styles.timeCellsWrapper}>
           {targetWeek.map((day) => (
-            <TimeColumn key={day.format(dayjsFormats.day)} />
+            <TimeColumn key={day.format(dayjsFormats.day)}></TimeColumn>
           ))}
         </div>
       </div>
