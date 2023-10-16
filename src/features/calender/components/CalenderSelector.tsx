@@ -4,14 +4,15 @@ import React from 'react';
 import { useCalenderContext } from '@/store/calender-theme';
 import { useTargetDateContext } from '@/store/target-date';
 import { getDay, getWeek, getMonth } from '@/features/calender/utils/dayjs';
+import { useCheckTokenValidity } from '@/hooks/useCheckTokenValidity';
 
 const MonthCalender = React.lazy(() => import('./organisms/MonthCalender'));
 const WeekCalender = React.lazy(() => import('./organisms/WeekCalender'));
 const DayCalender = React.lazy(() => import('./organisms/DayCalender'));
 
 export default function CalenderSelector() {
+  useCheckTokenValidity();
   const { calenderTheme } = useCalenderContext();
-
   const { targetDate } = useTargetDateContext();
   const targetWeek = getWeek(targetDate.date(), targetDate.month(), targetDate.year());
   const targetMonth = getMonth(targetDate.date(), targetDate.month(), targetDate.year());
