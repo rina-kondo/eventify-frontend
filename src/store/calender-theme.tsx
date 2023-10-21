@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { getCookie } from '@/utility/clientCookie';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -24,7 +24,8 @@ type CalenderContextType = {
 const CalenderContext = createContext<CalenderContextType | undefined>(undefined);
 
 export const CalenderContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [calenderTheme, setCalenderTheme] = useState<CalenderThemeType>(calenderSettings);
+  const [calenderTheme, setCalenderTheme] = useState<CalenderThemeType>('month');
+  useEffect(() => setCalenderTheme(calenderSettings), []);
 
   return <CalenderContext.Provider value={{ calenderTheme, setCalenderTheme }}>{children}</CalenderContext.Provider>;
 };

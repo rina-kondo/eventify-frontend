@@ -4,7 +4,7 @@ import { jaJP } from '@mui/x-date-pickers/locales';
 
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
-const theme = createTheme(
+const customTheme = createTheme(
   {
     palette: {
       mode: 'light',
@@ -78,10 +78,18 @@ const theme = createTheme(
           },
         },
       },
+
+      // カスタム箇所
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: { width: '120px' },
+          input: { padding: '10px 10px', maxWidth: '120px' },
+        },
+      },
     },
   },
   jaJP,
   coreJaJP,
 );
 
-export default theme;
+export default customTheme;

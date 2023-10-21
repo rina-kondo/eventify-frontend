@@ -1,12 +1,22 @@
 import dayjs from 'dayjs';
+import { EventLabel } from '../atoms/EventLabel';
 import { TimeSlot } from '../molecules/TimeSlot';
 import { TimeColumn } from '../molecules/TimeColumn';
 import { DayText } from '../atoms/DayText';
 import { WeekdayText } from '../atoms/WeekdayText';
 import styles from './DayCalender.module.scss';
 import { dayjsFormats } from '@/dictionary/calender';
+import { EventDataPropsType } from '@/features/calender/types';
 
-const DayCalender = ({ targetDate, today }: { targetDate: dayjs.Dayjs; today: dayjs.Dayjs }) => {
+const DayCalender = ({
+  targetDate,
+  today,
+  eventData,
+}: {
+  targetDate: dayjs.Dayjs;
+  today: dayjs.Dayjs;
+  eventData?: EventDataPropsType[];
+}) => {
   return (
     <>
       <div className={styles.dateSlot}>
@@ -24,7 +34,7 @@ const DayCalender = ({ targetDate, today }: { targetDate: dayjs.Dayjs; today: da
       <div className={styles.dateGrid}>
         <TimeSlot />
         <div className={styles.timeCellsWrapper}>
-          <TimeColumn />
+          <TimeColumn></TimeColumn>
         </div>
       </div>
     </>
