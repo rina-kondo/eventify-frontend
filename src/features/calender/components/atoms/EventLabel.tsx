@@ -12,7 +12,7 @@ type EventLabelProps = {
 export const EventLabel: React.FC<EventLabelProps> = ({ calenderType, eventData, index, eventDataArray }) => {
   if (!eventData || !index) return null;
 
-  const calenderTypeClass = calenderType === 'month' ? styles.dayCalendar : styles.weekMonthCalendar;
+  const calenderTypeClass = calenderType === 'month' ? styles.monthCalendar : styles.weekDayCalendar;
   const calculatedStyle = calculateLabelStyle(calenderType, eventData, eventDataArray, index);
 
   return (
@@ -32,28 +32,28 @@ const calculateLabelStyle = (
   const dtEnd = new Date(eventData.dtEnd);
   const durationMinutes = (dtEnd.getTime() - dtStart.getTime()) / (1000 * 60);
   const eventLabelTop = dtStart.getMinutes() + dtStart.getHours() * 60;
-  const eventDataIndex = eventDataArray.findIndex((event) => event.id === eventData.id);
   const minuteThreshold = 60;
 
-  const backwardOverlappedCount = getOverlappedCount(eventDataIndex, eventDataArray, minuteThreshold);
-  const forwardOverlappedCount = getOverlappedCount(eventDataIndex, eventDataArray.reverse(), minuteThreshold);
-  const isEventBetween = JudgeIsEventBetween(dtStart, dtEnd, eventDataArray, minuteThreshold);
+  const forwardOverlappedCount = getOverlappedCount(eventDataArray, minuteThreshold);
+  const backwardOverlappedCount = getOverlappedCount(eventDataArray.toReversed(), minuteThreshold);
+  const isEventBetween = JudgeIsEventBetween(eventDataArray, minuteThreshold);
 
   // eventDataの開始時刻が1h以内に重なるイベントの数を数える
-  function getOverlappedCount(eventDataIndex: number, eventDataArray: EventDataPropsType[], threshold: number) {
+  function getOverlappedCount(eventDataArray: EventDataPropsType[], threshold: number) {
+    const eventDataIndex = eventDataArray.findIndex((event) => event.id === eventData.id);
     let count = 0;
     for (let i = eventDataIndex; i > 0; i--) {
       const currentDtStart = new Date(eventDataArray[i].dtStart);
       const preDtStart = new Date(eventDataArray[i - 1].dtStart);
 
-      if (currentDtStart.getDate() !== preDtStart.getDate()) {
+      if (!isMatchMonth(currentDtStart, preDtStart)) {
         break;
       }
 
       const currentEventLabelTop = minutesSinceMidnight(currentDtStart);
       const preEventLabelTop = minutesSinceMidnight(preDtStart);
 
-      if (currentEventLabelTop - preEventLabelTop < threshold) {
+      if (Math.abs(currentEventLabelTop - preEventLabelTop) < threshold) {
         count++;
       } else {
         break;
@@ -66,39 +66,37 @@ const calculateLabelStyle = (
     return date.getMinutes() + date.getHours() * 60;
   }
 
-  // eventDataの開始時間がeventDataArrayのいずれかのイベントの開始時間と終了時間の間にあるかどうかを判定しbooleanを返す
-  function JudgeIsEventBetween(dtStart: Date, dtEnd: Date, eventDataArray: EventDataPropsType[], threshold: number) {
-    let low = 0;
-    let high = eventDataArray.length - 1;
-    let closestEventIndex = -1;
-
-    while (low <= high) {
-      const mid = Math.floor((low + high) / 2);
-      const midDtStart = new Date(eventDataArray[mid].dtStart);
-
-      if (midDtStart < dtStart) {
-        low = mid + 1;
-      } else if (midDtStart > dtStart) {
-        high = mid - 1;
-      } else {
-        closestEventIndex = mid;
-        break;
-      }
-    }
-
-    if (closestEventIndex === -1) {
-      return false;
-    }
-
-    const closestEvent = eventDataArray[closestEventIndex];
-    const closestDtStart = new Date(closestEvent.dtStart);
-    const closestDtEnd = new Date(closestEvent.dtEnd);
-
-    return dtStart >= closestDtStart && dtEnd <= closestDtEnd;
+  function isMatchMonth(date1: Date, date2: Date) {
+    return date1.getMonth() === date2.getMonth();
   }
 
-  const width = calenderType === 'month' ? 58 : 50 / (backwardOverlappedCount + forwardOverlappedCount + 1);
-  const marginLeft = 1 + (forwardOverlappedCount > 0 ? width * forwardOverlappedCount : 0) + (isEventBetween ? 1 : 0);
+  // eventDataの開始時間がeventDataArrayのいずれかのイベントの開始時間と終了時間の間にあるかどうかを判定しbooleanを返す
+  function JudgeIsEventBetween(eventDataArray: EventDataPropsType[], threshold: number) {
+    for (let i = 0; i < eventDataArray.length; i++) {
+      const thresholdDtStart = new Date(eventDataArray[i].dtStart);
+      thresholdDtStart.setMinutes(thresholdDtStart.getMinutes() + threshold);
+      const thresholdDtEnd = new Date(eventDataArray[i].dtEnd);
+
+      if (thresholdDtStart <= dtStart && dtStart <= thresholdDtEnd) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  let width = 57;
+  switch (calenderType) {
+    case 'week':
+      width = 51 / (backwardOverlappedCount + forwardOverlappedCount + 1) - (isEventBetween ? 5 : 0);
+      break;
+    case 'day':
+      width = 370 / (backwardOverlappedCount + forwardOverlappedCount + 1) - (isEventBetween ? 5 : 0);
+      break;
+    case 'month':
+      break;
+  }
+
+  const marginLeft = 1 + (forwardOverlappedCount > 0 ? width * forwardOverlappedCount : 0) + (isEventBetween ? 5 : 0);
 
   const labelStyle = {
     height: calenderType === 'month' ? '24px' : `${durationMinutes}px`,

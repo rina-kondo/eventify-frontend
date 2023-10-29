@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import dayjs from 'dayjs';
 import { EventLabel } from '../atoms/EventLabel';
 import { TimeSlot } from '../molecules/TimeSlot';
@@ -34,7 +35,29 @@ const DayCalender = ({
       <div className={styles.dateGrid}>
         <TimeSlot />
         <div className={styles.timeCellsWrapper}>
-          <TimeColumn></TimeColumn>
+          <TimeColumn>
+            <Suspense>
+              {eventData &&
+                eventData.map((event, index) => {
+                  {
+                    if (
+                      targetDate.format(dayjsFormats.dateHeader) ===
+                      dayjs(event.dtStart).format(dayjsFormats.dateHeader)
+                    ) {
+                      return (
+                        <EventLabel
+                          key={index}
+                          index={index}
+                          eventDataArray={eventData}
+                          eventData={event}
+                          calenderType="day"
+                        />
+                      );
+                    }
+                  }
+                })}
+            </Suspense>
+          </TimeColumn>
         </div>
       </div>
     </>

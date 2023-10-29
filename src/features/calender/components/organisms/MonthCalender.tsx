@@ -56,7 +56,15 @@ const MonthCalender = ({
                         if (
                           day.format(dayjsFormats.dateHeader) === dayjs(event.dtStart).format(dayjsFormats.dateHeader)
                         ) {
-                          return <EventLabel key={index} eventData={event} calenderType="month" />;
+                          return (
+                            <EventLabel
+                              key={index}
+                              index={index}
+                              eventDataArray={eventData}
+                              eventData={event}
+                              calenderType="month"
+                            />
+                          );
                         }
                       }
                     })}

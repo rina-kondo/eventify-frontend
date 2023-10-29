@@ -22,7 +22,7 @@ export function useCheckTokenValidity() {
         });
     } else {
       setIsTokenValid(false);
-      console.log('fetching token failed');
+      router.push('/sign-in');
     }
   }, [isAuthPage, router]);
 
