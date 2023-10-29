@@ -1,0 +1,21 @@
+.eventLabel {
+  padding: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-align: start;
+  word-break: keep-all;
+  background-color: var(--color-orange);
+  border: solid 1px var(--color-white);
+  border-radius: 5px;
+}
+
+.monthCalendar {
+  position: absolute;
+}
+
+.weekDayCalendar {
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
